@@ -4,5 +4,4 @@ function Index() {
   return <Home />;
 }
 
-//blabla
 export default Index;

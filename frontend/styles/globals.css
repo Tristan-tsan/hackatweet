@@ -1,10 +1,16 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Mont-Heavy;
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: 1.5fr 3fr 2fr;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.ant-input-data-count {
+  color: white !important;
 }

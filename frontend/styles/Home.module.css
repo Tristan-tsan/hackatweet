@@ -5,6 +5,8 @@
   align-items: center;
   min-height: 100vh;
   padding: 4rem 0;
+  background-color: #111820;
+  border: 2px red;
 }
 
 .title {
@@ -13,10 +15,29 @@
 }
 
 .title a {
-  color: #0070f3;
+  color: white;
   text-decoration: none;
 }
 
 .title a:hover, .title a:focus, .title a:active {
   text-decoration: underline;
+}
+
+.input {
+  border-bottom: 1px solid #4b5563;
+  .input:focus { border-bottom: 1px solid white; }
+}
+
+.tweetbutton {
+  background-color: #1D9BF0;
+  color:white;
+  border-radius: 20px;
+}
+
+.faEgg{
+  color:white;
+}
+
+.ant-input-show-count-suffix {
+  color: white;
 }
