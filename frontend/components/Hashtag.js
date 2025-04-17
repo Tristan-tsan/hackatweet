@@ -12,16 +12,17 @@ function Hashtag(props) {
     const dispatch = useDispatch();
     const hashtag = useSelector((state) => state.hashtag.value);
     const [searchHash, setSearchHash] = useState('');
-    let articles = [];
+    let findResearch = [];
 
     const searchButton = () => {
         if (searchHash != '') {
-            dispatch(taggies(props));
+            dispatch(taggies(searchHash.toString()));
             //console.log(hashtag[1]);
-            articles = hashtag.map((data, i) => {
-                console.log('data')
+            hashtag.map((data, i) => {
+                findResearch.push(data);
+                console.log('result ' + data)
             });
-            console.log('articles');
+            console.log('retour ' + findResearch);
         }
         else { console.log('vide') }
     }
