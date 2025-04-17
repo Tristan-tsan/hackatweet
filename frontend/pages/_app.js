@@ -8,17 +8,19 @@ import hashtag from '../reducers/hashtag';
 //import hiddenArticles from '../reducers/hiddenArticles'
 
 //config redux persistor
-import { persistStore, persistReducer } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
-import storage from 'redux-persist/lib/storage';
+//import { persistStore, persistReducer } from 'redux-persist';
+//import { PersistGate } from 'redux-persist/integration/react';
+//import storage from 'redux-persist/lib/storage';
 
-const reducers = combineReducers({ hashtag });
+/*const reducers = combineReducers({ hashtag });
 const persistConfig = { key: 'hackatweet', storage };
 
 const store = configureStore({
   reducer: persistReducer(persistConfig, reducers),
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
-});
+});*/
+
+const store = configureStore ({reducer: {hashtag}});
 
 function App({ Component, pageProps }) {
   return (

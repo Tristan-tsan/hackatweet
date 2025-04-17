@@ -1,14 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	value: [],
+	value: ['test', 'toto', 'baba'],
 };
 
 export const hashtagSlice = createSlice({
 	name: 'hashtag',
 	initialState,
 	reducers: {
-		addBookmark: (state, action) => {
+		taggies: (state, action) => {
+			//state.value.push(action.payload);
+			state.value = state.value.filter(tweet => tweet === action.payload);
+		},
+		/*addBookmark: (state, action) => {
 			state.value.push(action.payload);
 		},
 		removeBookmark: (state, action) => {
@@ -16,9 +20,9 @@ export const hashtagSlice = createSlice({
 		},
 		removeAllBookmark: (state) => {
 			state.value = [];
-		},
+		},*/
 	},
 });
 
-export const { addBookmark, removeBookmark, removeAllBookmark } = hashtagSlice.actions;
+export const { taggies } = hashtagSlice.actions;
 export default hashtagSlice.reducer;
