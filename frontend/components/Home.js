@@ -5,7 +5,7 @@ function Home() {
     <div>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          See what's happening <a href="https://nextjs.org">Next.js!</a>
         </h1>
       </main>
     </div>
