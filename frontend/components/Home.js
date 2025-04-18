@@ -1,15 +1,35 @@
 import styles from '../styles/Home.module.css';
+import Tweet from './Tweet';
 import { Input } from 'antd';
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+
 
 const { TextArea } = Input;
 
 function Home() {
+
+  const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/tweet/get')
+      .then(res => res.json())
+      .then(data => setTweets(data));
+  }, []);
+
+  const handleDeleteTweet = (id) => {
+    setTweets(tweets.filter(tweet => tweet._id !== id));
+  };
+
+
   return (
 
     <div className={styles.container}>
         
-        <div className={styles.index}> 
+        <div className={styles.index}>
+          <Link href="/">
           <img className={styles.logo} src="/logo.png" />
+          </Link>
         </div>
 
         <main className={styles.main}>
@@ -19,6 +39,9 @@ function Home() {
             <div>
               <button className={styles.tweetButton}>Tweet</button>
             </div>
+            {tweets.map(tweet => (
+            <Tweet key={tweet._id} tweet={tweet} onDelete={handleDeleteTweet}/>
+      ))}
         </main>
 
         <div className={styles.trends}> 
