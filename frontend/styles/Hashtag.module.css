@@ -15,3 +15,7 @@
 	margin: 30px;
 	
 }
+
+.messageContainer {
+	border: 2px solid red;
+}

@@ -2,17 +2,19 @@ import Head from 'next/head';
 import styles from '../styles/Hashtag.module.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { taggies } from '../reducers/hashtag';
+//import { taggies } from '../reducers/hashtag';
 //import Moment from 'react-moment';
 //import { Modal } from 'antd';
 import Link from 'next/link';
 
 
-function Hashtag(props) {
+function Hashtag() {
     //const dispatch = useDispatch();
     //const hashtag = useSelector((state) => state.hashtag.value);
     const [searchHash, setSearchHash] = useState('');
     let findResearch = [];
+    const [returnTag, setReturnTag] = useState({});
+    let message = '';
 
     const searchButton = () => {
         if (searchHash != '') {
@@ -25,9 +27,14 @@ function Hashtag(props) {
                             findResearch.push(data.message[i])
                         }
                         let reponse = findResearch.map((data, j) => {
-                        return <div key={j} {...data} ><p>ok</p></div>
-                    })
-                        console.log(findResearch);
+                            return { firstname: data.firstname, username: data.username, date: data.date, message: data.message }
+                        })
+                        message = reponse[0].message;
+                        setReturnTag(reponse.map((data, k) => {
+                            return <Hashtag key={k} firstname={data.firstname} username={data.username} date={data.date} message={data.message} />
+                        }))
+                        //console.log(message);
+
                         return (
                             <div>
                                 <Head>
@@ -38,8 +45,9 @@ function Hashtag(props) {
                                     <div className={styles.searchContainer}>
                                         <input type='text' placeholder='hashg' onChange={(e) => setSearchHash(e.target.value)} value={searchHash} />
                                         <button id='searchButton' onClick={() => searchButton()}>search</button>
-                                        {reponse}
-
+                                        <div className={styles.messagesContainer}>
+                                            <p>{message}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +85,9 @@ function Hashtag(props) {
                 <div className={styles.searchContainer}>
                     <input type='text' placeholder='hashg' onChange={(e) => setSearchHash(e.target.value)} value={searchHash} />
                     <button id='searchButton' onClick={() => searchButton()}>search</button>
-
+                    <div className={styles.messagesContainer}>
+                        {returnTag[1]}
+                    </div>
                 </div>
             </div>
         </div>
