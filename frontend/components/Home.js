@@ -5,17 +5,26 @@ const { TextArea } = Input;
 
 function Home() {
   return (
-    <div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          <a>Home</a>
+
+    <div className={styles.container}>
+        
+        <div className={styles.index}> 
+          <img className={styles.logo} src="/logo.png" />
+        </div>
+
+        <main className={styles.main}>
+          <h1 className={styles.title}>Home</h1>
           <br />
           <TextArea showCount maxLength={280} placeholder="What's up?"/>
             <div>
-              <button className={styles.tweetbutton}>Tweet</button>
+              <button className={styles.tweetButton}>Tweet</button>
             </div>
-        </h1>
-      </main>
+        </main>
+
+        <div className={styles.trends}> 
+          <h1>TRENDS</h1>
+        </div>
+ 
     </div>
   );
 }
