@@ -22,7 +22,7 @@ function Hashtag() {
                 .then(response => response.json())
                 .then(data => {
                     if (data.result) {
-                        //console.log(data.message);
+                        console.log(data.message);
                         for (let i = 0; i < data.message.length; i++) {
                             findResearch.push(data.message[i])
                         }
