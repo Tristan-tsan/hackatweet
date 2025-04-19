@@ -6,19 +6,50 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import SignIn from './SignIn';
 
 const { TextArea } = Input;
 
 function Home() {
   const [taggy, setTaggy] = useState(true);
   const [tweets, setTweets] = useState([]);
+  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [searchHash, setSearchHash] = useState('');
 
+  if (!showSignIn) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <img src="logo.jpg" alt="Hackatweet Logo" className={styles.logo} />
+        </div>
+        <div className={styles.right}>
+          <img src="logo-small.jpg" alt="Small Logo" className={styles.logoSmall} />
+          <h1 className={styles.headline}>See what’s<br />happening</h1>
+          <p className={styles.subheadline}>Join Hackatweet today.</p>
+  
+          <button className={styles.signup} onClick={() => setShowSignUp(true)}>
+            Sign up
+          </button>
+  
+          <p className={styles.loginPrompt}>Already have an account?</p>
+  
+          <button className={styles.signin} onClick={() => setShowSignIn(true)}>
+            Sign in
+          </button>
+  
+          {showSignIn && <SignIn/>}
+          {showSignUp && <div className={styles.modal}>Sign Up Modal</div>}
+        </div>
+      </div>
+    );
+  }else{
   if (!taggy) {
-  useEffect(() => {
+  //useEffect(() => {
     fetch('http://localhost:3000/tweet/get')
       .then(res => res.json())
       .then(data => setTweets(data));
-  }, []);
+  //}, []);
 
   const handleDeleteTweet = (id) => {
     setTweets(tweets.filter(tweet => tweet._id !== id));
@@ -27,11 +58,11 @@ function Home() {
 
   return (
 
-    <div className={styles.container}>
+    <div className={styles.containerLogin}>
         
         <div className={styles.index}>
           <Link href="/">
-          <img className={styles.logo} src="/logo.png" />
+          <img className={styles.logoLogin} src="/logo.png" />
           </Link>
         </div>
 
@@ -53,9 +84,8 @@ function Home() {
  
     </div>
   );
-}else{
+}else{  
   
-  const [searchHash, setSearchHash] = useState('');
 
   const searchButton = () => {
      // console.log(searchHash);
@@ -74,11 +104,11 @@ function Home() {
     <div>
 
 
-<div className={styles.container}>
+<div className={styles.containerLogin}>
     
     <div className={styles.index}>
       <Link href="/">
-      <img className={styles.logo} src="/logo.png" />
+      <img className={styles.logoLogin} src="/logo.png" />
       </Link>
     </div>
     <main className={styles.main}>
@@ -102,7 +132,7 @@ function Home() {
 </div>
 );
 }
-
+}
 }
 
 export default Home;
