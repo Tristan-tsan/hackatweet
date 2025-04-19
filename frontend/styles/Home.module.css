@@ -1,22 +1,69 @@
-.main {
-  display: flex;
+.container{
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.index {
+  grid-row-start: 1;
+  grid-row-end: 13;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #111820;
+  display:flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.main {
+  grid-row-start: 1;
+  grid-row-end: 13;
+  grid-column-start: 3;
+  grid-column-end: 10;
   align-items: center;
   min-height: 100vh;
   padding: 4rem 0;
+  background-color: #111820;
+  border-right: 1px solid #333;
+  border-left: 1px solid #333;
+}
+
+.trends {
+  grid-row-start: 1;
+  grid-row-end: 13;
+  grid-column-start: 10;
+  grid-column-end: 13;
+  background-color: #111820;
 }
 
 .title {
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+  color: white;
 }
 
 .title a:hover, .title a:focus, .title a:active {
   text-decoration: underline;
+}
+
+.input {
+  border-bottom: 1px solid #4b5563;
+  .input:focus { border-bottom: 1px solid white; }
+}
+
+.tweetButton {
+  background-color: #1D9BF0;
+  color:white;
+  border-radius: 20px;
+}
+
+.logo{
+  height:auto;
+  width:6rem;
+  position:center;
+  cursor:pointer;
+}
+
+.tweet{
+  border: 1px solid #4b5563;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

@@ -6,13 +6,14 @@ const Tweet = require('../models/tweets');
 //const { checkBody } = require('../modules/checkBody');
 
 //recherche hashtag - à adapter au modèle des tweets
-router.get('/taggies/:searchTag', (req, res) => {
-    Tweet.find({message: {$regex: new RegExp(req.params.searchTag, 'i')},}).then(data =>{
-        console.log(data)
+router.get('/taggies/:searchTag', (req, res) => {   
+    Tweet.find({message: {$regex: new RegExp(req.params.searchTag, 'i')},}).then(data =>{        
         if (data[0]) {
             res.json({result: true, message: data})
         }else{
-            res.json({result: false, message: 'message not found'})
+            Tweet.find().sort({ date: -1 }).then((tweets) => {
+                res.json({result: false, message: tweets})
+              });
         }
     }
     )})
@@ -23,7 +24,7 @@ router.get('/taggies/:searchTag', (req, res) => {
         const newTweet = new Tweet({
             firstname: req.body.firstname,
             username: req.body.username,
-            date: 18/04/2025,
+            date: new Date(),
             message: req.body.message,
         })
             newTweet.save().then(newDoc => {

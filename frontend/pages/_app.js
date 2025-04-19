@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { combineReducers, configureStore } from '@reduxjs/toolkit'; //add combineReducers pour config persistor
 import hashtag from '../reducers/hashtag';
+import tweet from '../reducers/tweet';
 //import user from '../reducers/user';
 //import hiddenArticles from '../reducers/hiddenArticles'
 
@@ -20,13 +21,13 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
 });*/
 
-const store = configureStore ({reducer: {hashtag}});
+const store = configureStore ({reducer: {hashtag, tweet}});
 
 function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Head>
-        <title>Next.js App</title>
+        <title>Hackatweet</title>
       </Head>
       <Component {...pageProps} />
     </Provider>
